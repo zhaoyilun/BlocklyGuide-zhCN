@@ -1,0 +1,44 @@
+# 缩放
+
+Blockly的主工作空间可以是可扩展的，可由用户动态调整，也可由开发人员静态调整。
+
+缩放设置由作为Blockly配置一部分的对象定义。这是一个例子：
+
+```js
+var workspace = Blockly.inject('blocklyDiv',
+    {toolbox: document.getElementById('toolbox'),
+     zoom:
+         {controls: true,
+          wheel: true,
+          startScale: 1.0,
+          maxScale: 3,
+          minScale: 0.3,
+          scaleSpeed: 1.2},
+     trashcan: true});
+```
+
+## 控制
+
+设置为true以显示缩放中心，放大和缩小按钮。默认为false。zoom-controls.png
+
+![zoom-controls](./zoom-controls.png)
+
+## 滚轮
+
+设置为true以允许鼠标滚轮缩放。默认为false。
+
+## 初始规格（startScale）
+
+初始放大系数。对于具有多个级别的应用程序，startScale通常在第一级设置为较高值，然后随着后续级别变得更复杂而逐渐降低。默认为1.0。
+
+## 最大规格（maxScale）
+
+可以放大的最大倍增系数。默认为3。
+
+## 最小规格（minScale）
+
+可以缩小的最小倍增系数。默认为0.3。
+
+## 缩放速率
+
+对于每个缩小进出步骤，比例分别乘以或除以比例速度，这意味着：scale = scaleSpeed ^ 缩放次数。请注意，在此公式中，减去缩小步骤并添加放大步骤。默认为1.2。
